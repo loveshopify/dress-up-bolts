@@ -1,0 +1,107 @@
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css");
+
+#shopify-section-page-faq-template {
+
+    background-color: #51525070;
+
+    .container.main.content {
+        padding: 0px;
+    }
+
+    .faqAccordion {
+        margin-bottom: 80px;
+    }
+
+    dt button {
+        background: white !important;
+        color: #020202 !important;
+        font-family: Poppins;
+        font-size: 16px;
+        font-weight: 600;
+        padding: 18px 30px;
+        border: none;
+        margin-bottom: 6px;
+
+        &:after {
+            left: auto;
+            right: 24px;
+            content: "\f0d7";
+            font-size: 18px;
+            font-family: FontAwesome;
+        }        
+    }
+
+    button[aria-expanded="true"]::after {
+        content: "\f0d8";
+    }
+
+    dd {
+        background: white;
+        color: #020202;
+        font-family: Poppins;
+        font-size: 14px;
+        margin-top: 6px;
+        margin-bottom: 6px;
+        margin-left: 0px;
+        padding: 24px 30px;
+    }
+}
+
+.main_nav {
+    position: relative;
+
+    .dropdown_container.mega-menu {
+        position: absolute;
+        top: 120px;
+
+        .dropdown.menu {
+            background-color: rgba(35,36,35,0.96);
+        }
+
+        ul.dropdown_title {
+
+            border-bottom: 0;
+            margin-top: 24px;
+            
+            a {
+                font-size: 30px;
+                font-style: italic;
+                font-weight: bold;
+                padding-top: 24px;                
+                border-top: 1px solid #D8D8D8;
+            }
+        }
+        
+        .dropdown_column__menu ul li:hover a {
+            color: #EAC01D;
+        }
+    }
+}
+
+.sticky_nav--stick .dropdown_container.mega-menu {
+    top: 64px;
+}
+
+#shopify-section-page-details1-template {
+    .block__custom_html {
+        padding: 68px 0px;
+        background-color: #515250;
+    }
+}
+
+#shopify-section-text-columns-with-images {
+    background-color: #51525070 !important;
+    font-size: 14px;
+
+    .text-column .border-style--box {
+        height: 0;
+        padding-bottom: 116%;
+        overflow: hidden;
+    }
+
+    img {
+        width: 234px;
+        height: 234px;
+    }
+}
+

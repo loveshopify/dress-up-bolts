@@ -1,0 +1,18 @@
+if($('.js-featured-promotions').length) {
+    setTimeout(function(){
+        $('.slider-promotions').flickity({
+            wrapAround: true,
+            cellAlign: 'left',
+            draggable: false,
+            pageDots: false
+        }); 
+    }, 200);
+       
+}
+
+$(document).on('click', '.meta-header .tab-item', function(e){
+    $('.meta-header .tab-active').removeClass('tab-active');
+    $('.tab-content-active').removeClass('tab-content-active');
+    $(this).addClass('tab-active');
+    $('.tab-content-' + $(this).attr('content')).addClass('tab-content-active');
+});

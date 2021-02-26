@@ -1,0 +1,60 @@
+{% if section.settings.featured_collection_image %}
+  {% capture sizes %}100x,480x,765x,1400x,2048x{% endcapture %}
+  {% assign sizes = sizes | split: ',' %}
+
+  <header class="banner center page_banner dark-overlay-{{ section.settings.image_darken }}">
+    {% if template contains 'collection' %}
+      <img
+        {% if collection.image %}
+          src="{{ collection.image | img_url: sizes.first }}"
+          data-src="{{ collection.image | img_url: sizes.last }}"
+        {%- elsif section.settings.image -%}
+          src="{{ section.settings.image | img_url: sizes.first }}"
+          data-src="{{ section.settings.image | img_url: sizes.last }}"
+        {%- else %}
+          src="{{ collection.products.first.featured_image | product_img_url: sizes.first }}"
+          data-src="{{ collection.products.first.featured_image | product_img_url: sizes.last }}"
+        {% endif %}
+        alt="{{ collection.title | escape }}"
+        class="lazyload {{ settings.image_loading_style }}"
+        sizes="100vw"
+        srcset="{%- for size in sizes -%}
+                  {%- if collection.image -%}
+                    {{ collection.image | img_url: size }}
+                  {%- elsif section.settings.image -%}
+                    {{ section.settings.image | img_url: size, format: 'pjpg' }}
+                  {%- else -%}
+                    {{ collection.products.first.featured_image | product_img_url: size }}
+                  {%- endif -%}
+                  {{ size | replace: "x", "w" }}{% unless forloop.last %},{% endunless %}
+                {%- endfor -%}
+        " />
+        {% if section.settings.display_collection_title %}
+        <div class="caption captionOverlay--true">
+          <h1 class="headline">{{ collection.title }}</h1>
+        </div>
+        {% endif %}
+    {% else %}
+      {% if section.settings.image != nil %}
+          <img  src="{{ section.settings.image | img_url: '100x' }}"
+            alt="{% if section.settings.image.alt != blank %}{{ section.settings.image.alt | escape }}{% else %}{{ page.title | escape }}{% endif %}"
+            class="lazyload {{ settings.image_loading_style }}"
+            data-src="{{ section.settings.image | img_url: '1400x', format: 'pjpg' }}"
+            sizes="100vw"
+            srcset="{{ section.settings.image | img_url: '480x', format: 'pjpg' }} 480w,
+                    {{ section.settings.image | img_url: '765x', format: 'pjpg' }} 765w,
+                    {{ section.settings.image | img_url: '1400x', format: 'pjpg' }} 1400w,
+                    {{ section.settings.image | img_url: '2048x', format: 'pjpg' }} 2048w"
+              />
+          <div class="caption captionOverlay--true">
+            <h1 class="headline">{{ section.settings.title }}</h1>
+            <p class="subtitle">{{ section.settings.subtitle }}</p>
+          </div>
+      {% endif %}
+    {% endif %}
+  </header>
+{% endif %}
+
+<a name="pagecontent" id="pagecontent"></a>
+
+

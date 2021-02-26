@@ -1,0 +1,38 @@
+<div class="container">
+    {% for block in section.blocks %}
+        <div class="grid-item">
+            <div class="large-text {% if block.settings.small_text == blank %}full-height{% endif %}">
+                <span>{{ block.settings.large_text }}</span>
+            </div>
+            {% if block.settings.small_text != blank %}
+            <div class="small-text">
+                <span>{{ block.settings.small_text }}</span>
+            </div>
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>
+{% schema %}
+    {
+        "name": "Text Info Section",
+        "max_blocks": 4,
+        "blocks": [
+            {
+                "name": "Text Block",
+                "type": "text",
+                "settings": [
+                    {
+                        "type": "text",
+                        "id": "large_text",
+                        "label": "Large Text"
+                    },
+                    {
+                        "type": "text",
+                        "id": "small_text",
+                        "label": "Small Text"
+                    }
+                ]
+            }
+        ]
+    }
+{% endschema %}
